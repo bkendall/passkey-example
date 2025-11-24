@@ -1,7 +1,7 @@
 env:
-- variable: RP_ID
-  value: passkeys.bkend.xyz
-  availability: [ RUNTIME ]
-- variable: EXPECTED_ORIGIN
-  value: https://passkeys.bkend.xyz
-  availability: [ RUNTIME ]
+  - variable: RP_ID
+    value: passkeys.bkend.xyz
+    availability: [RUNTIME]
+  - variable: EXPECTED_ORIGIN
+    value: https://passkeys.bkend.xyz
+    availability: [RUNTIME]
