@@ -8,6 +8,7 @@ This project demonstrates a simple implementation of Passkey authentication (Web
 - **User Login**: Log in using a registered Passkey.
 - **Session Management**: Simple session management using cookies.
 - **In-Memory Storage**: Uses `lru-cache` for storing user data and authentication challenges (Note: Data is lost when the server restarts).
+- **Static Resource Caching**: Static assets in `public/` are cached for 5 minutes.
 
 ## Tech Stack
 
@@ -30,9 +31,31 @@ This project demonstrates a simple implementation of Passkey authentication (Web
     ```
 
 2.  Install dependencies:
+
     ```bash
     npm install
     ```
+
+3.  (Optional) Configure environment variables:
+    Copy `.env.example` to `.env` and adjust as needed.
+    ```bash
+    cp .env.example .env
+    ```
+
+## Configuration
+
+The application can be configured using environment variables:
+
+- `PORT`: The port the server listens on (default: `3000`).
+- `RP_ID`: The Relying Party ID, effectively the hostname (default: `localhost`).
+- `EXPECTED_ORIGIN`: The expected origin for WebAuthn requests (default: `http://localhost:3000`).
+
+## Development
+
+- **Format Code**:
+  ```bash
+  npm run format
+  ```
 
 ## Usage
 
@@ -68,3 +91,10 @@ This project demonstrates a simple implementation of Passkey authentication (Web
 
 - **Data Persistence**: This example uses in-memory storage (`lru-cache`) for simplicity. **All user data and registered credentials will be lost if you restart the server.** For a production application, you should use a persistent database (e.g., MongoDB, PostgreSQL).
 - **Security**: This is a demonstration project. In a production environment, ensure you serve the application over HTTPS (WebAuthn requires a secure context, although `localhost` is treated as secure for development).
+
+## Deployment
+
+This project is configured for deployment on **Google Cloud App Hosting**.
+
+- See `apphosting.prod.yaml` for configuration details.
+- Ensure environment variables (`RP_ID`, `EXPECTED_ORIGIN`) are set correctly in your deployment environment to match your production domain.
