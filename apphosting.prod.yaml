@@ -1,3 +1,7 @@
+runConfig:
+  maxInstances: 1
+  concurrency: 80
+
 env:
   - variable: RP_ID
     value: passkeys.bkend.xyz
